@@ -78,7 +78,7 @@ await sitemap.writeSitemapFiles();
 
 ## Limitations
 
-*   When available, the language code is expected to be placed immediately after the domain : `https://example.com/{languageCode}/path`.
+*   The language code is expected to be placed immediately after the domain when generating the canonical URL : `https://example.com/{languageCode}/path`.
 
 ## Version
 
