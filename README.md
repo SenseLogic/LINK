@@ -36,14 +36,14 @@ let sitemap = new Sitemap(
 sitemap.addRoute(
     '/{languageCode}/home',
     { languageCode : 'en' },
-    '',
+    'main/',
     'en'
     );
 
 sitemap.addRoute(
     '/{languageCode}/about',
     { languageCode : 'en' },
-    '',
+    'main/',
     'en'
     );
 
@@ -58,7 +58,7 @@ for ( let languageCode of [ 'en', 'fr', 'de' ] )
     sitemap.addRoute(
         '/{languageCode}/products',
         { languageCode },
-        'products',
+        'products/',
         languageCode
         );
 
@@ -67,7 +67,7 @@ for ( let languageCode of [ 'en', 'fr', 'de' ] )
         sitemap.addRoute(
             '/{languageCode}/product/{productId}',
             { languageCode, productId : product.id, crawlPriority : 0.9 },
-            'products',
+            'products/',
             languageCode
             );
     }
@@ -78,7 +78,9 @@ await sitemap.writeSitemapFiles();
 
 ## Limitations
 
-*   The language code is expected to be placed immediately after the domain when generating the canonical URL : <br><br>`https://example.com/{languageCode}/path`
+*   Routes can't be added to the root sitemap file.
+*   Sitemap subfolder paths must end with a slash character.
+*   The language code must be placed immediately after the domain : <br><br>`https://example.com/{languageCode}/path`
 
 ## Version
 
