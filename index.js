@@ -19,7 +19,7 @@ export class SitemapRoute
         )
     {
         assert(
-            subFolderPath !== ''
+            subFolderPath.length > 1
             && subFolderPath.endsWith( '/' )
             );
 
