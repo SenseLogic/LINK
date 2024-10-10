@@ -80,7 +80,7 @@ await sitemap.writeSitemapFiles();
 
 *   Routes can't be added to the root sitemap file.
 *   Sitemap subfolder paths must end with a slash character.
-*   The language code must be placed immediately after the domain : <br><br>`https://example.com/{languageCode}/path`
+*   The language code must be placed immediately after the domain : `https://example.com/{languageCode}/...`
 
 ## Version
 
