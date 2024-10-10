@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+  <loc>https://cityviews.com/city/chicago/district/the-loop/landmark/willis-tower</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/chicago/district/the-loop/landmark/willis-tower" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/chicago/district/the-loop/landmark/willis-tower" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/chicago/district/the-loop/landmark/willis-tower" />
+  <changefreq>daily</changefreq>
+  <priority>1</priority>
+</url>
+<url>
+  <loc>https://cityviews.com/city/los-angeles/district/downtown/landmark/walt-disney-concert-hall</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/los-angeles/district/downtown/landmark/walt-disney-concert-hall" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/los-angeles/district/downtown/landmark/walt-disney-concert-hall" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/los-angeles/district/downtown/landmark/walt-disney-concert-hall" />
+  <changefreq>daily</changefreq>
+  <priority>1</priority>
+</url>
+<url>
+  <loc>https://cityviews.com/city/los-angeles/district/hollywood/landmark/griffith-observatory</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/los-angeles/district/hollywood/landmark/griffith-observatory" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/los-angeles/district/hollywood/landmark/griffith-observatory" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/los-angeles/district/hollywood/landmark/griffith-observatory" />
+  <changefreq>daily</changefreq>
+  <priority>1</priority>
+</url>
+</urlset>

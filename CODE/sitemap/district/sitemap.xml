@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+  <loc>https://cityviews.com/city/chicago/district/lincoln-park</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/chicago/district/lincoln-park" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/chicago/district/lincoln-park" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/chicago/district/lincoln-park" />
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://cityviews.com/city/chicago/district/the-loop</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/chicago/district/the-loop" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/chicago/district/the-loop" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/chicago/district/the-loop" />
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://cityviews.com/city/los-angeles/district/downtown</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/los-angeles/district/downtown" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/los-angeles/district/downtown" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/los-angeles/district/downtown" />
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+</urlset>

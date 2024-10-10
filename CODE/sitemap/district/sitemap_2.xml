@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+  <loc>https://cityviews.com/city/los-angeles/district/hollywood</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/los-angeles/district/hollywood" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/los-angeles/district/hollywood" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/los-angeles/district/hollywood" />
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://cityviews.com/city/new-york/district/harlem</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/new-york/district/harlem" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/new-york/district/harlem" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/new-york/district/harlem" />
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://cityviews.com/city/new-york/district/upper-east-side</loc>
+  <xhtml:link rel="alternate" hreflang="en" href="https://cityviews.com/en/city/new-york/district/upper-east-side" />
+  <xhtml:link rel="alternate" hreflang="fr" href="https://cityviews.com/fr/city/new-york/district/upper-east-side" />
+  <xhtml:link rel="alternate" hreflang="de" href="https://cityviews.com/de/city/new-york/district/upper-east-side" />
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+</urlset>
