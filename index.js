@@ -107,28 +107,6 @@ export class Sitemap
 
     // ~~
 
-    async getSitemapFilePath(
-        rootFolderPath,
-        subFolderPath,
-        fileName = 'sitemap.xml'
-        )
-    {
-        let folderPath = path.join( rootFolderPath, subFolderPath );
-
-        try
-        {
-            await fs.promises.access( folderPath );
-        }
-        catch ( error )
-        {
-            await fs.promises.mkdir( folderPath, { recursive: true } );
-        }
-
-        return path.join( folderPath, fileName );
-    }
-
-    // ~~
-
     getRouteArrayBySubFolderMap(
         routeArray = undefined
         )
@@ -215,6 +193,22 @@ export class Sitemap
 
     // ~~
 
+    async createFolder(
+        folderPath
+        )
+    {
+        try
+        {
+            await fs.promises.access( folderPath );
+        }
+        catch ( error )
+        {
+            await fs.promises.mkdir( folderPath, { recursive: true } );
+        }
+    }
+
+    // ~~
+
     async writeSitemapFile(
         rootFolderPath,
         subFolderPath,
@@ -223,8 +217,11 @@ export class Sitemap
         fileName = 'sitemap.xml'
         )
     {
+        let folderPath = path.join( rootFolderPath, subFolderPath );
+        await this.createFolder( folderPath );
+
         let sitemapFileText = this.getSitemapFileText( canonicalUrlArray, routeArrayByCanonicalUrlMap );
-        let sitemapFilePath = await this.getSitemapFilePath( rootFolderPath, subFolderPath, fileName );
+        let sitemapFilePath = path.join( folderPath, fileName );
 
         await this.writeFile( sitemapFilePath, sitemapFileText );
     }
@@ -236,6 +233,8 @@ export class Sitemap
         rootSitemapFileArray
         )
     {
+        await this.createFolder( rootFolderPath );
+
         let rootSitemapFileText = this.getRootSitemapFileText( rootSitemapFileArray );
         let rootSitemapFilePath = path.join( rootFolderPath, 'sitemap.xml' );
 
