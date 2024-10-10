@@ -10,7 +10,7 @@ Sitemap generation library.
 - **Route Patterns**: Define URL patterns with placeholders for dynamic parameters.
 - **Natural Alphanumerical Sorting**: Automatically sort URLs in a human-friendly order.
 - **Automatic File Splitting**: Split large sitemaps into multiple files respecting the 50000 URL limit.
-- **Customization**: Set default update frequencies and priorities, or customize per route.
+- **Customization**: Set default change frequencies and crawl priorities, or customize per route.
 - **Flexible Output**: Generate sitemaps in desired directory structures.
 
 ## Installation
