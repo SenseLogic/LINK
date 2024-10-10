@@ -78,7 +78,7 @@ await sitemap.writeSitemapFiles();
 
 ## Limitations
 
-*   If any, the language code is expected to be placed immediately after the domain : `https://example.com/{languageCode}/path`.
+*   When available, the language code is expected to be placed immediately after the domain : `https://example.com/{languageCode}/path`.
 
 ## Version
 
