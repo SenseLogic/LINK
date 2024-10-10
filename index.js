@@ -1,5 +1,6 @@
 // -- IMPORTS
 
+import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 
@@ -17,6 +18,11 @@ export class SitemapRoute
         languageCode = undefined
         )
     {
+        assert(
+            subFolderPath !== ''
+            && subFolderPath.endsWith( '/' )
+            );
+
         this.routePattern = routePattern;
         this.parameterByNameMap = parameterByNameMap;
         this.subFolderPath = subFolderPath;
@@ -80,6 +86,11 @@ export class Sitemap
         }
         )
     {
+        assert(
+            rootFolderPath === ''
+            || rootFolderPath.endsWith( '/' )
+            );
+
         this.websiteUrl = websiteUrl;
         this.changeFrequency = changeFrequency;
         this.crawlPriority = crawlPriority;

@@ -1,7 +1,7 @@
 {
     "name": "senselogic-link",
     "description": "Sitemap generation library.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "author": "Eric Pelzer <ecstatic.coder@gmail.com>",
     "license": "LGPL-3.0-only",
     "repository": {
