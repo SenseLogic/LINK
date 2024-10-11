@@ -1,6 +1,5 @@
 // -- IMPORTS
 
-import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,23 +10,22 @@ export class SitemapRoute
     // -- CONSTRUCTORS
 
     constructor(
-        routePattern,
-        parameterByNameMap,
-        subFolderPath,
         websiteUrl,
-        languageCode = undefined
+        path,
+        subFolderPath,
+        languageCode,
+        changeFrequency,
+        crawlPriority,
+        modificationDate
         )
     {
-        assert(
-            subFolderPath.length > 1
-            && subFolderPath.endsWith( '/' )
-            );
-
-        this.routePattern = routePattern;
-        this.parameterByNameMap = parameterByNameMap;
-        this.subFolderPath = subFolderPath;
         this.websiteUrl = websiteUrl;
+        this.path = path;
+        this.subFolderPath = subFolderPath;
         this.languageCode = languageCode;
+        this.changeFrequency = changeFrequency;
+        this.crawlPriority = crawlPriority;
+        this.modificationDate = modificationDate;
     }
 
     // ~~
@@ -35,14 +33,7 @@ export class SitemapRoute
     getUrl(
         )
     {
-        let url = this.routePattern;
-
-        for ( let parameterName in this.parameterByNameMap )
-        {
-            url = url.replaceAll( `{${ parameterName }}`, encodeURIComponent( this.parameterByNameMap[ parameterName ] ) );
-        }
-
-        return `${ this.websiteUrl }${ url }`;
+        return this.websiteUrl + this.path;
     }
 
     // ~~
@@ -52,7 +43,7 @@ export class SitemapRoute
     {
         let url = this.getUrl();
 
-        if ( this.languageCode !== undefined )
+        if ( this.languageCode !== '' )
         {
             let urlPrefix = this.websiteUrl + this.languageCode;
 
@@ -79,22 +70,19 @@ export class Sitemap
     constructor(
         {
             websiteUrl = '',
+            rootFolderPath = '',
             changeFrequency = 'monthly',
             crawlPriority = 0.5,
-            rootFolderPath = '',
+            modificationDate = new Date(),
             maximumUrlCountPerFile = 50000
         }
         )
     {
-        assert(
-            rootFolderPath === ''
-            || rootFolderPath.endsWith( '/' )
-            );
-
         this.websiteUrl = websiteUrl;
+        this.rootFolderPath = rootFolderPath;
         this.changeFrequency = changeFrequency;
         this.crawlPriority = crawlPriority;
-        this.rootFolderPath = rootFolderPath;
+        this.modificationDate = modificationDate;
         this.maximumUrlCountPerFile = maximumUrlCountPerFile;
         this.routeArray = [];
     }
@@ -192,8 +180,14 @@ export class Sitemap
             }
 
             let firstRoute = routeArray[ 0 ];
-            sitemapFileText += `  <changefreq>${ firstRoute.parameterByNameMap.changeFrequency }</changefreq>\n`;
-            sitemapFileText += `  <priority>${ firstRoute.parameterByNameMap.crawlPriority }</priority>\n`;
+            sitemapFileText += `  <changefreq>${ firstRoute.changeFrequency }</changefreq>\n`;
+            sitemapFileText += `  <priority>${ firstRoute.crawlPriority }</priority>\n`;
+
+            if ( firstRoute.modificationDate )
+            {
+                sitemapFileText += `  <lastmod>${ firstRoute.modificationDate.toISOString() }</lastmod>\n`;
+            }
+
             sitemapFileText += `</url>\n`;
         }
 
@@ -208,13 +202,18 @@ export class Sitemap
         folderPath
         )
     {
-        try
+        if ( folderPath !== ''
+             && folderPath !== './'
+             && folderPath.endsWith( '/' ) )
         {
-            await fs.promises.access( folderPath );
-        }
-        catch ( error )
-        {
-            await fs.promises.mkdir( folderPath, { recursive: true } );
+            try
+            {
+                await fs.promises.access( folderPath );
+            }
+            catch ( error )
+            {
+                await fs.promises.mkdir( folderPath, { recursive: true } );
+            }
         }
     }
 
@@ -346,22 +345,25 @@ export class Sitemap
     // -- OPERATIONS
 
     addRoute(
-        routePattern,
-        parameterByNameMap = {},
+        path,
         subFolderPath,
-        languageCode = undefined
+        languageCode = '',
+        optionMap = {}
         )
     {
-        let changeFrequency = parameterByNameMap.changeFrequency ?? this.changeFrequency;
-        let crawlPriority = parameterByNameMap.crawlPriority ?? this.crawlPriority;
+        let changeFrequency = optionMap.changeFrequency ?? this.changeFrequency;
+        let crawlPriority = optionMap.crawlPriority ?? this.crawlPriority;
+        let modificationDate = optionMap.modificationDate ?? this.modificationDate;
 
         let route =
             new SitemapRoute(
-                routePattern,
-                { ...parameterByNameMap, changeFrequency, crawlPriority },
-                subFolderPath,
                 this.websiteUrl,
-                languageCode
+                path,
+                subFolderPath,
+                languageCode,
+                changeFrequency,
+                crawlPriority,
+                modificationDate
                 );
 
         this.routeArray.push( route );

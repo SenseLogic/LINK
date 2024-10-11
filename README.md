@@ -6,12 +6,11 @@ Sitemap generation library.
 
 ## Features
 
-- **Multilingual Support**: Generate sitemaps with alternate language links (`xhtml:link` tags).
-- **Route Patterns**: Define URL patterns with placeholders for dynamic parameters.
+- **Multilingual Support**: Generate sitemaps with alternate language links.
 - **Natural Alphanumerical Sorting**: Automatically sort URLs in a human-friendly order.
-- **Automatic File Splitting**: Split large sitemaps into multiple files respecting the 50000 URL limit.
-- **Customization**: Set default change frequencies and crawl priorities, or customize per route.
+- **Customization**: Set default change frequencies, crawl priorities and modification dates, or customize per route.
 - **Flexible Output**: Generate sitemaps in desired directory structures.
+- **Automatic File Splitting**: Split large sitemaps into multiple files respecting the 50000 URL limit.
 
 ## Installation
 
@@ -27,25 +26,14 @@ import { Sitemap } from 'senselogic-link';
 let sitemap = new Sitemap(
     {
         websiteUrl : 'https://example.com',
+        rootFolderPath : 'sitemaps/',
         changeFrequency : 'weekly',
-        crawlPriority : 0.5,
-        rootFolderPath : 'sitemaps/'
+        crawlPriority : 0.5
     }
     );
 
-sitemap.addRoute(
-    '/{languageCode}/home',
-    { languageCode : 'en' },
-    'main/',
-    'en'
-    );
-
-sitemap.addRoute(
-    '/{languageCode}/about',
-    { languageCode : 'en' },
-    'main/',
-    'en'
-    );
+sitemap.addRoute( `/${ languageCode }/home`, 'main/', 'en' );
+sitemap.addRoute( `/${ languageCode }/about`, 'main/', 'en' );
 
 let productArray =
     [
@@ -55,20 +43,15 @@ let productArray =
 
 for ( let languageCode of [ 'en', 'fr', 'de' ] )
 {
-    sitemap.addRoute(
-        '/{languageCode}/products',
-        { languageCode },
-        'products/',
-        languageCode
-        );
+    sitemap.addRoute( `/${ languageCode }/products`, 'products/', languageCode );
 
     for ( let product of productArray )
     {
         sitemap.addRoute(
-            '/{languageCode}/product/{productId}',
-            { languageCode, productId : product.id, crawlPriority : 0.9 },
+            `/${ languageCode }/product/${ product.id }`,
             'products/',
-            languageCode
+            languageCode,
+            { crawlPriority : 0.9 }
             );
     }
 }

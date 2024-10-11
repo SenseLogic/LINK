@@ -104,9 +104,9 @@ describe(
                     new Sitemap(
                         {
                             websiteUrl : 'https://cityviews.com/',
+                            rootFolderPath : 'sitemap/',
                             changeFrequency : 'weekly',
                             crawlPriority : 0.8,
-                            rootFolderPath : 'sitemap/',
                             maximumUrlCountPerFile : 3
                         }
                         );
@@ -114,8 +114,7 @@ describe(
                 for ( let languageCode of [ 'en', 'fr', 'de' ] )
                 {
                     sitemap.addRoute(
-                        '{languageCode}/cities',
-                        { languageCode },
+                        `${ languageCode }/cities`,
                         'main/',
                         languageCode
                         );
@@ -123,17 +122,16 @@ describe(
                     for ( let city of cityArray )
                     {
                         sitemap.addRoute(
-                            '{languageCode}/city/{cityId}',
-                            { languageCode, cityId : city.id, crawlPriority : 0.7 },
+                            `${ languageCode }/city/${ city.id }`,
                             'city/',
-                            languageCode
+                            languageCode,
+                            { crawlPriority : 0.7 }
                             );
 
                         for ( let district of city.districtArray )
                         {
                             sitemap.addRoute(
-                                '{languageCode}/city/{cityId}/district/{districtId}',
-                                { languageCode, cityId : city.id, districtId : district.id },
+                                `${ languageCode }/city/${ city.id }/district/${ district.id }`,
                                 'district/',
                                 languageCode
                                 );
@@ -141,10 +139,10 @@ describe(
                             for ( let landmark of district.landmarkArray )
                             {
                                 sitemap.addRoute(
-                                    '{languageCode}/city/{cityId}/district/{districtId}/landmark/{landmarkId}',
-                                    { languageCode, cityId : city.id, districtId : district.id, landmarkId : landmark.id, changeFrequency : 'daily', crawlPriority : 1.0 },
+                                    `${ languageCode }/city/${ city.id }/district/${ district.id }/landmark/${ landmark.id }`,
                                     'landmark/',
-                                    languageCode
+                                    languageCode,
+                                    { changeFrequency : 'daily', crawlPriority : 1.0 }
                                     );
                             }
                         }
