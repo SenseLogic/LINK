@@ -1,7 +1,6 @@
 // -- IMPORTS
 
 import fs from 'fs';
-import path from 'path';
 
 // -- TYPES
 
@@ -227,11 +226,11 @@ export class Sitemap
         fileName = 'sitemap.xml'
         )
     {
-        let folderPath = path.join( rootFolderPath, subFolderPath );
+        let folderPath = rootFolderPath + subFolderPath;
         await this.createFolder( folderPath );
 
         let sitemapFileText = this.getSitemapFileText( canonicalUrlArray, routeArrayByCanonicalUrlMap );
-        let sitemapFilePath = path.join( folderPath, fileName );
+        let sitemapFilePath = folderPath + fileName;
 
         await this.writeFile( sitemapFilePath, sitemapFileText );
     }
@@ -246,7 +245,7 @@ export class Sitemap
         await this.createFolder( rootFolderPath );
 
         let rootSitemapFileText = this.getRootSitemapFileText( rootSitemapFileArray );
-        let rootSitemapFilePath = path.join( rootFolderPath, 'sitemap.xml' );
+        let rootSitemapFilePath = rootFolderPath + 'sitemap.xml';
 
         await this.writeFile( rootSitemapFilePath, rootSitemapFileText );
 
